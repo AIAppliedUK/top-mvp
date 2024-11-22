@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>TOTP Setup</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Set Up Multi-Factor Authentication</h1>
+    </header>
+    <div class="container">
+        <p>Your TOTP Secret Key: <strong th:text="${secretKey}"></strong></p>
+        <form th:action="@{/totp/generate-qr}" method="post">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required />
+
+            <label for="issuer">Issuer:</label>
+            <input type="text" id="issuer" name="issuer" required />
+
+            <input type="hidden" name="secretKey" th:value="${secretKey}" />
+            <input type="submit" value="Generate QR Code" />
+        </form>
+    </div>
+    <footer>
+        &copy; 2024 Scottish Government
+    </footer>
+</body>
+</html>

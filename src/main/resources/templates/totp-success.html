@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Validation Successful</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Multi-Factor Authentication</h1>
+    </header>
+    <div class="container">
+        <div class="success-message">
+            <h2>Validation Successful!</h2>
+            <p th:text="${successMessage}"></p>
+        </div>
+        <a href="./setup" class="button">Return to Dashboard</a>
+    </div>
+    <footer>
+        &copy; 2024 Scottish Government
+    </footer>
+</body>
+</html>

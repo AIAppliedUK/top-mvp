@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Scan QR Code</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Multi-Factor Authentication Setup</h1>
+    </header>
+    <div class="container">
+        <h2>Scan This QR Code</h2>
+        <p>Use an authenticator app (e.g., Google Authenticator or Microsoft Authenticator) to scan the QR code below:</p>
+        <div class="qr-code">
+            <img th:src="'data:image/png;base64,' + ${qrCodeImage}" alt="QR Code" />
+        </div>
+        <p>Alternatively, you can manually enter this secret key in your app:</p>
+        <p class="secret-key"><strong th:text="${secretKey}"></strong></p>
+
+        <h3>Validate Your Code</h3>
+        <form th:action="@{/totp/validate}" method="post">
+            <input type="hidden" name="secretKey" th:value="${secretKey}" />
+            <label for="totpCode">Enter the code from your Authenticator App:</label>
+            <input type="text" id="totpCode" name="totpCode" placeholder="Enter TOTP code" required />
+            <button type="submit">Validate Code</button>
+        </form>
+    </div>
+    <footer>
+        &copy; 2024 Scottish Government
+    </footer>
+</body>
+</html>

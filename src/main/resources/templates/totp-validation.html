@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Validation Failed</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>Multi-Factor Authentication</h1>
+    </header>
+    <div class="container">
+        <div class="error-message">
+            <h2>Validation Failed</h2>
+            <p th:text="${errorMessage}"></p>
+        </div>
+        <form th:action="@{/totp/validate}" method="post">
+            <input type="hidden" name="secretKey" th:value="${secretKey}" />
+            <label for="totpCode">Enter the code from your Authenticator App:</label>
+            <input type="text" id="totpCode" name="totpCode" placeholder="Enter TOTP code" required />
+            <button type="submit">Retry</button>
+        </form>
+    </div>
+    <footer>
+        &copy; 2024 Scottish Government
+    </footer>
+</body>
+</html>
